@@ -1,0 +1,79 @@
+﻿@using EntitiyLayer.Concrete
+@model List<Category>
+
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+<br />
+    <div class="container">
+
+        <div class="card-columns">
+            <div class="card bg-primary">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        Kategori Tablosunda <hr />
+                        <h1>@ViewBag.numberOfCategories</h1><hr />
+                        Adet Kategori vardır
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-warning">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        Başlık Tablosunda
+                        <hr />
+                        <h1>@ViewBag.numberOfSoftwareHeadings</h1><hr />
+                        Adet Yazılım alt başlığı vardır
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-success">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        Yazar Tablosunda
+                        <hr />
+                        <h1>@ViewBag.numberofLetterAinAuthorName</h1>
+                        <hr />
+                        Adet Adında 'A' Harfi Geçen Yazar Sayısı Vardır
+                    </p>
+                </div>
+            </div>
+            <div class="card bg-danger">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        Başlık Tablosunda
+                        <hr />
+                        <h1>
+                            @ViewBag.numberOfHeading
+                        </h1>
+                        <hr />
+                        En Fazla Sahip Olan Kategori
+                    </p>
+                </div>
+            </div>
+
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                        Kategori Tablosunda
+                        <hr />
+                        <h1>
+
+                            @{
+                                int sonuc = 0;
+                                int numberOfTrue = Convert.ToInt32(@ViewBag.numberOfTrue);
+                                int numberOfFalse = Convert.ToInt32(@ViewBag.numberOfFalse);
+                                sonuc = numberOfTrue - numberOfFalse;
+                            }
+                            @sonuc
+                        </h1>
+                        <hr />
+                        Aktif ile Pasif Kategori Arasındaki Sayısal Fark
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
