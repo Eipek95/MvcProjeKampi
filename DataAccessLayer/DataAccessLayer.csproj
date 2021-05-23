@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IAbout.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
-    <Compile Include="Abstract\IContactDal.cs" />
+    <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IRepository1.cs" />
@@ -78,6 +78,14 @@
     <Compile Include="Migrations\202105191003267_mig_writertitle_Add.designer.cs">
       <DependentUpon>202105191003267_mig_writertitle_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105230949077_mig_imagesizechange.cs" />
+    <Compile Include="Migrations\202105230949077_mig_imagesizechange.designer.cs">
+      <DependentUpon>202105230949077_mig_imagesizechange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105231006401_mig_addwriterstatus.cs" />
+    <Compile Include="Migrations\202105231006401_mig_addwriterstatus.designer.cs">
+      <DependentUpon>202105231006401_mig_addwriterstatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +108,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105191003267_mig_writertitle_Add.resx">
       <DependentUpon>202105191003267_mig_writertitle_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105230949077_mig_imagesizechange.resx">
+      <DependentUpon>202105230949077_mig_imagesizechange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105231006401_mig_addwriterstatus.resx">
+      <DependentUpon>202105231006401_mig_addwriterstatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

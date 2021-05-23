@@ -27,14 +27,14 @@ namespace MvcProjeKampi.Controllers
             List<SelectListItem> valuecategory = (from x in cm.GetList()
                                                   select new SelectListItem
                                                   {
-                                                      Text=x.CategoryName,
-                                                      Value=x.CategoryID.ToString()
+                                                      Text = x.CategoryName,
+                                                      Value = x.CategoryID.ToString()
                                                   }).ToList();
             List<SelectListItem> valuewriter = (from x in wm.GetList()
                                                 select new SelectListItem
                                                 {
-                                                    Text=x.WriterName+" "+x.WriterSurname,
-                                                    Value=x.WriterID.ToString()
+                                                    Text = x.WriterName + " " + x.WriterSurname,
+                                                    Value = x.WriterID.ToString()
                                                 }).ToList();
             ViewBag.vlc = valuecategory;
             ViewBag.vlw = valuewriter;
@@ -47,5 +47,6 @@ namespace MvcProjeKampi.Controllers
             hm.HeadingAddBL(p);
             return RedirectToAction("Index");
         }
+
     }
 }
