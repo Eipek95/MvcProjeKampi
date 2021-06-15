@@ -37,7 +37,6 @@ namespace BusinessLayer.Concrete
         {
             return _ContactDal.Get(x=>x.ContactID==id);
         }
-
         public List<Contact> GetList()
         {
             return _ContactDal.List();

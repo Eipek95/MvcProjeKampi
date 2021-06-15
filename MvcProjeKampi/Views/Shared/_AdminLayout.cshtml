@@ -61,7 +61,10 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library-->
-                        <li class="nav-item has-treeview "><!--li class="nav-item has-treeview menu-open -->
+                        @if (User.IsInRole("B"))//kullanıcı rölü b ise görüntüleme yapsın
+                        {
+                        <li class="nav-item has-treeview ">
+                            <!--li class="nav-item has-treeview menu-open -->
                             <a href="/AdminCategory/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -69,6 +72,7 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
+                        }
                         <li class="nav-item">
                             <a href="/Heading/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -124,7 +128,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/Contact/Index" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     İletişim & Mesajlar
@@ -134,33 +138,13 @@ to get the desired effect
 
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/MySkills/Index" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
-                                    Yazılar
+                                    Yeteneklerim
 
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Simple Tables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>DataTables</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/jsgrid.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>jsGrid</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
@@ -172,7 +156,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/Gallery/Index/" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
@@ -180,11 +164,10 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/ErrorPage/Page404/" class="nav-link">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
                                     Hata Sayfaları
-                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
 
@@ -227,8 +210,9 @@ to get the desired effect
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery-->
+   @*<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
+
     <!-- Bootstrap -->
     <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->

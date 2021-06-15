@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Index", "AdminRecord", FormMethod.Post))
+{
+    <div class="container" style="background-color:darkkhaki">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Admin Kayıt Sayfası</h2>
+                <div class="form-group">
+                    @Html.Label("Admin-Kullanıcı Adı")
+                    @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+                    <br />
+                    <br />
+                    @Html.Label("Admin-Şifre")
+                    @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control", type = "password" })
+                    <br />
+                    <br />
+                    @Html.Label("Admin-Rol")
+                    @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
+                    <br />
+                    <br />
+                    <button class="btn btn-primary" type="submit">Button</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

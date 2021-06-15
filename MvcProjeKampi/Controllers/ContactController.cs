@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRıles;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntitiyLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,8 @@ namespace MvcProjeKampi.Controllers
     {
         // GET: Contact
         ContactManager cm = new ContactManager(new EfContactDal());
+        MessageManager mm = new MessageManager(new EfMessageDal());
+        DraftManager dm = new DraftManager(new EfDraftDal());
         ContactValidator cv = new ContactValidator();
         public ActionResult Index()
         {
@@ -23,6 +27,33 @@ namespace MvcProjeKampi.Controllers
         {
             var contactvalues = cm.GetByID(id);
             return View(contactvalues);
+        }
+        public PartialViewResult MessageListMenu()
+        {
+            var draftCount = dm.GetList().Count();
+            var contactCount = mm.GetListInbox().Count();
+            var contactCount2 = mm.GetListSendbox().Count();
+            var contactCount3 = cm.GetList().Count();
+            var contactFalseCount = cm.GetList().Where(x => x.ContactReadStatus == false).Count();
+            var contactTrueCount = cm.GetList().Where(x => x.ContactReadStatus == true).Count();
+            var messageFalseCount = mm.GetListInbox().Where(x => x.MessageReadStatus == false).Count();
+            var messageTrueCount = mm.GetListInbox().Where(x => x.MessageReadStatus == true).Count();
+            ViewBag.draft = draftCount;
+            ViewBag.adminInbox = contactCount;
+            ViewBag.adminSendbox = contactCount2;
+            ViewBag.Inbox = contactCount3;
+            ViewBag.CFalseCount = contactFalseCount;
+            ViewBag.CTrueCount = contactTrueCount;
+            ViewBag.MFalseCount = messageFalseCount;
+            ViewBag.MTrueCount = messageTrueCount;
+            return PartialView();
+        }
+        public ActionResult UpdateContractReadStatus(int id)
+        {
+            var HeadingValue = cm.GetByID(id);
+            HeadingValue.ContactReadStatus = true;
+            cm.ContactUpdate(HeadingValue);
+            return RedirectToAction("Index");
         }
     }
 }

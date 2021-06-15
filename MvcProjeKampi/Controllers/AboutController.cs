@@ -29,9 +29,41 @@ namespace MvcProjeKampi.Controllers
             abm.AboutAddBL(p);
             return RedirectToAction("Index");
         }
+
         public PartialViewResult AboutPartial()
         {
             return PartialView();
         }
+        [Route("About/UpdateAboutStatus/{id}/{status}")]
+        public ActionResult UpdateAboutStatus(int id,bool status)
+        {
+
+            var AboutValue = abm.GetByID(id);
+            if (AboutValue.AboutStatus==status)
+            {
+                if (AboutValue.AboutStatus)
+                {
+                    return View(AboutValue);
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else 
+            {
+                AboutValue.AboutStatus =status;
+                if (AboutValue.AboutStatus)
+                {
+                    abm.AboutUpdate(AboutValue);
+                    return View(AboutValue);
+                }
+                else
+                {
+                    return View();
+                }
+            }
+        }
+
     }
 }

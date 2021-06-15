@@ -1,0 +1,31 @@
+﻿@model List<EntityLayer.Concrete.MySkills>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/SkillsCard.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <h2>Yetenek Kart Profilim | <a style="color:wheat" href="/About/Index/">Mvc Proje Kampi</a></h2>
+        <img src="~/AdminLTE-3.0.4/web/images/emre.jpg" />
+        <h1>Emre İpek</h1>
+        <h3>Bilgisayar Mühendisi</h3>
+        @foreach (var item in Model)
+        {
+            <div class="skills">
+                <span class="Name">@item.mySkillsName</span>
+                <div class="percent">
+                    <div class="progress" style="width:@item.mySkillsPoint% "></div>
+                </div>
+                <span class="Value">@item.mySkillsPoint%</span>
+            </div>
+        }
+    </div>
+</body>
+<footer></footer>
+</html>

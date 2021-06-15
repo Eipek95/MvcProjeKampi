@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Hakkında Verİ Listesi</h2>
+<h2>Hakkında Veri Listesi</h2>
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
@@ -13,13 +13,13 @@
         <th>Aktif Yap</th>
         <th>Pasif Yap</th>
     </tr>
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <td>@item.AboutID</td>
             <td>Başlık</td>
-            <td><a href="#" class="btn btn-warning">Aktif Yap</a></td>
-            <td><a href="#" class="btn btn-danger">Pasif Yap</a></td>
+            <td><a href="/About/UpdateAboutStatus/@item.AboutID/true" class="btn btn-warning">Aktif Yap</a></td>
+            <td><a href="/About/UpdateAboutStatus/@item.AboutID/false" class="btn btn-danger">Pasif Yap</a></td>
         </tr>
     }
 </table>
