@@ -43,25 +43,19 @@ namespace MvcProjeKampi.Controllers
             {
                 AboutValue.AboutStatus = status;
                 abm.AboutUpdate(AboutValue);
-                return RedirectToAction("ShowAbout");
+               
             }
             else if (AboutValue.AboutStatus != status && status == false)
             {
                 AboutValue.AboutStatus = status;
                 abm.AboutUpdate(AboutValue);
-                return RedirectToAction("ShowAbout");
             }
             else
             {
-                if (AboutValue.AboutStatus)
-                {
-                    return RedirectToAction("ShowAbout");
-                }
-                else
-                {
-                    return RedirectToAction("ShowAbout");
-                }
+
             }
+            return RedirectToAction("ShowAbout");
+
         }
 
 
