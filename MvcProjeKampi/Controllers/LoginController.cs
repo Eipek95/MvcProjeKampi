@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using MvcProjeKampi.HashAlgorithms;
+using EntitiyLayer.Concrete;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,6 +17,8 @@ namespace MvcProjeKampi.Controllers
     {
         // GET: Login
         LoginManager lm = new LoginManager(new EfLoginDal());
+        WriterManager wm = new WriterManager(new EfWriterDal());
+
         [HttpGet]
         public ActionResult Index()
         { 
@@ -36,6 +39,27 @@ namespace MvcProjeKampi.Controllers
                 return RedirectToAction("Index");
             }
          
+        }
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+        public ActionResult WriterLogin(Writer p)
+        {
+            var writeruserinfo = wm.GetList().FirstOrDefault(x=>x.WriterMail==p.WriterMail&&x.WriterPassword==p.WriterPassword);
+            if (writeruserinfo!=null)
+            {
+                FormsAuthentication.SetAuthCookie(p.WriterMail, false);
+                Session["WriterUserName"] = p.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+
+            }
+            else
+            {
+                return View("WriterLogin");
+            }
+            
         }
     }
 }

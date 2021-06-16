@@ -39,31 +39,36 @@ namespace MvcProjeKampi.Controllers
         {
 
             var AboutValue = abm.GetByID(id);
-            if (AboutValue.AboutStatus==status)
+            if (AboutValue.AboutStatus != status&&status==true)
             {
-                if (AboutValue.AboutStatus)
-                {
-                    return View(AboutValue);
-                }
-                else
-                {
-                    return View();
-                }
+                AboutValue.AboutStatus = status;
+                abm.AboutUpdate(AboutValue);
+                return RedirectToAction("ShowAbout");
             }
-            else 
+            else if (AboutValue.AboutStatus != status && status == false)
             {
-                AboutValue.AboutStatus =status;
+                AboutValue.AboutStatus = status;
+                abm.AboutUpdate(AboutValue);
+                return RedirectToAction("ShowAbout");
+            }
+            else
+            {
                 if (AboutValue.AboutStatus)
                 {
-                    abm.AboutUpdate(AboutValue);
-                    return View(AboutValue);
+                    return RedirectToAction("ShowAbout");
                 }
                 else
                 {
-                    return View();
+                    return RedirectToAction("ShowAbout");
                 }
             }
         }
 
+
+        public ActionResult ShowAbout()
+        {
+            var aboutvalues = abm.GetList();
+            return View(aboutvalues);
+        }
     }
 }
