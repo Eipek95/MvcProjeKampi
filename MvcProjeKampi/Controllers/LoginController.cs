@@ -13,6 +13,7 @@ using EntitiyLayer.Concrete;
 
 namespace MvcProjeKampi.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -45,15 +46,15 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
+       [HttpPost]
         public ActionResult WriterLogin(Writer p)
         {
             var writeruserinfo = wm.GetList().FirstOrDefault(x=>x.WriterMail==p.WriterMail&&x.WriterPassword==p.WriterPassword);
             if (writeruserinfo!=null)
             {
                 FormsAuthentication.SetAuthCookie(p.WriterMail, false);
-                Session["WriterUserName"] = p.WriterMail;
+                Session["WriterMail"] = p.WriterMail;
                 return RedirectToAction("MyContent", "WriterPanelContent");
-
             }
             else
             {
