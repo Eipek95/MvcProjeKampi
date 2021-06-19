@@ -18,17 +18,17 @@ namespace BusinessLayer.Concrete
             _contentDal = contentDal;
         }
 
-        public void ContentAddBL(Content category)
+        public void ContentAddBL(Content content)
+        {
+            _contentDal.Insert(content);
+        }
+
+        public void ContentDelete(Content content)
         {
             throw new NotImplementedException();
         }
 
-        public void ContentDelete(Content category)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ContentUpdate(Content category)
+        public void ContentUpdate(Content content)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public List<Content> GetList()
         {
-            throw new NotImplementedException();
+            return _contentDal.List();
         }
 
         public List<Content> GetListByHeadingID(int id)
