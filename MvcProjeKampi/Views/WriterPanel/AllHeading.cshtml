@@ -1,10 +1,11 @@
 ﻿@using EntitiyLayer.Concrete
-@model List<Heading>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
 @{
     ViewBag.Title = "AllHeading";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
-
 <h2>AllHeading</h2>
 @{
     string color = "";
@@ -148,8 +149,9 @@
 
     </section>
     <!-- /.content -->
-
-
-
 </body>
 </html>
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("AllHeading",new { p}),new PagedListRenderOptions {
+    LiElementClasses=new List<string>
+    {"page-link" }
+})
