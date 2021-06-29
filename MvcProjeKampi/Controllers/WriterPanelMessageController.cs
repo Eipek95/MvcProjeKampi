@@ -18,12 +18,14 @@ namespace MvcProjeKampi.Controllers
         MessageValidator validationRules = new MessageValidator();
         public ActionResult Inbox()
         {
-            var messageList = mm.GetListInbox();
+            string p = (string)Session["WriterMail"];
+            var messageList = mm.GetListInbox(p);
             return View(messageList);
         }
         public ActionResult Sendbox()
         {
-            var messageList = mm.GetListSendbox();
+            string p= (string)Session["WriterMail"];
+            var messageList = mm.GetListSendbox(p);
             return View(messageList);
         }
         public PartialViewResult MessageListMenu()
@@ -48,12 +50,14 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message p)
         {
+            string sender = (string)Session["WriterMail"];
             //var messageList = mm.GetListSendbox();
             //return View(messageList);
             ValidationResult result = validationRules.Validate(p);
             if (result.IsValid)
             {
-                p.SenderMail = "gizem@gmail.com";
+                
+                p.SenderMail = sender;
                 p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 mm.MessageAddBL(p);
                 return RedirectToAction("Sendbox");
