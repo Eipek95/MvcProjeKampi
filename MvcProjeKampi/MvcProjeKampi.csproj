@@ -145,6 +145,7 @@
     <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\AdminRecordController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -166,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LoginCheck\LoginCheck.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
@@ -2048,7 +2050,8 @@
     <Content Include="AdminLTE-3.0.4\web1\css\snow.css" />
     <Content Include="AdminLTE-3.0.4\web1\css\style.css" />
     <Content Include="AdminLTE-3.0.4\web1\images\5.jpg" />
-    <Content Include="AdminLTE-3.0.4\web1\images\banner.jpg" />
+    <Content Include="AdminLTE-3.0.4\web1\images\banner.jpeg" />
+    <Content Include="AdminLTE-3.0.4\web1\images\bannera.jpg" />
     <Content Include="AdminLTE-3.0.4\web1\images\close.png" />
     <Content Include="AdminLTE-3.0.4\web1\images\contact.jpg" />
     <Content Include="AdminLTE-3.0.4\web1\images\emre.jpg" />
@@ -2104,6 +2107,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\IFrameStyle.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\SkillsCard.css" />
     <Content Include="favicon.ico" />
@@ -2660,10 +2664,10 @@
     <Content Include="Views\Test\ToDoListForAdmin.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Content\GetAllContent.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
