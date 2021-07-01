@@ -1,0 +1,122 @@
+﻿@model MvcProjeKampi.Models.RoleEditModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit Role</h2>
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="roleName" value="@Model.Role.Name" />
+    <input type="hidden" name="roleId" value="@Model.Role.Id" />
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AdminLTE 3 | Projects</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- overlayScrollbars -->
+        <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    </head>
+    <body class="hold-transition sidebar-mini">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Add to @Model.Role.Name</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <tbody>
+                            @if (Model.NonMembers.Count() == 0)
+                            {
+                                <tr><td colspan="2">Bu role eklenebilecek kullanıcı yok</td></tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>User Id</td>
+                                    <td>Role</td>
+                                </tr>
+                                foreach (var item in Model.NonMembers)
+                                {
+                                    <tr>
+                                        <td>@item.UserName</td>
+                                        <td><input type="checkbox" name="IdsToAdd" value="@item.Id" /></td>
+                                    </tr>
+                                }
+                            }
+                            <tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <br />
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Remove to @Model.Role.Name</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <tbody>
+                            @if (Model.Members.Count() == 0)
+                            {
+                                <tr><td colspan="2">Bu role eklenmiş bir kullanıcı yok</td></tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>User Id</td>
+                                    <td>Role</td>
+                                </tr>
+                                foreach (var item in Model.Members)
+                                {
+                                    <tr>
+                                        <td>@item.UserName</td>
+                                        <td><input type="checkbox" name="IdsToDelete" value="@item.Id" /></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </body>
+</html>
+}

@@ -11,6 +11,8 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
+ 
+    [AllowAnonymous]
     public class WriterController : Controller
     {
         // GET: Writer

@@ -1,0 +1,40 @@
+﻿@model MvcProjeKampi.Models.Register
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Admin Ekleme</h2>
+<br />
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <span class="text-danger">@Html.ValidationSummary()</span>
+    <div class="form-group">
+        @Html.Label("Adı")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name)
+        <br />
+        @Html.Label("Soyadı")
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Surname)
+        <br />
+        @Html.Label("Kullanıcı Adı")
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.UserName)
+        <br />
+        @Html.Label("Mail")
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email)
+        <br />
+        @Html.Label("Şifre")
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Password)
+        <br />
+        @Html.Label("Şifre Tekrar")
+        @Html.PasswordFor(x => x.RePassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.RePassword)
+        <br />
+        <button class="btn btn-info">Admin Ekle</button>
+    </div>
+}

@@ -29,7 +29,7 @@ namespace MvcProjeKampi.Controllers
             p.PasswordSalt = crypto.Salt;
             arm.AdminAddBL(p);
             return RedirectToAction("Index", "Login");
-          
         }
+
     }
 }

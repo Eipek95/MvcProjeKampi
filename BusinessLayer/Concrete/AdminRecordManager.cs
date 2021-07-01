@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public List<Admin> GetList()
         {
-            throw new NotImplementedException();
+            return _adminRecordDal.List();
         }
     }
 }

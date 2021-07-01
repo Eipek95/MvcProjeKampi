@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
-using MvcProjeKampi.HashAlgorithms;
 using EntitiyLayer.Concrete;
 
 namespace MvcProjeKampi.Controllers
@@ -20,27 +19,7 @@ namespace MvcProjeKampi.Controllers
         LoginManager lm = new LoginManager(new EfLoginDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
         WriterLoginManager wlm = new WriterLoginManager(new EfWriterDal());
-        [HttpGet]
-        public ActionResult Index()
-        { 
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Index(Admin p)
-        {
-            
-            if (new LoginCheck().IsLoginSuccess(p))
-            {
-                FormsAuthentication.SetAuthCookie(p.AdminUserName, false);
-                Session["AdminUserName"] = p.AdminUserName;
-                return RedirectToAction("NewMessage","Message");
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-         
-        }
+
         [HttpGet]
         public ActionResult WriterLogin()
         {
