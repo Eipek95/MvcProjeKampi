@@ -1,0 +1,21 @@
+﻿@model EntityLayer.Concrete.MySkills
+@{
+    ViewBag.Title = "AddSkills";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddSkills</h2>
+
+@using (Html.BeginForm("AddSkills", "MySkills", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Yetenek Adı")
+        @Html.TextBoxFor(x => x.mySkillsName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yetenek Yüzdesi")
+        @Html.TextBoxFor(x => x.mySkillsPoint, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.mySkillsPoint)
+        <br />
+        <button class="btn btn-info">Yetenek Ekle</button>
+    </div>
+}

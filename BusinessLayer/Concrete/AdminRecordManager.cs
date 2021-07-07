@@ -30,12 +30,12 @@ namespace BusinessLayer.Concrete
 
         public void AdminUpdate(Admin admin)
         {
-            throw new NotImplementedException();
+            _adminRecordDal.Update(admin);
         }
 
         public Admin GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _adminRecordDal.Get(X=>X.AdminID==id);
         }
 
         public List<Admin> GetList()

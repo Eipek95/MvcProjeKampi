@@ -13,6 +13,7 @@ using FluentValidation.Results;
 using BusinessLayer.ValidationRıles;
 namespace MvcProjeKampi.Controllers
 {
+    [Authorize]
     public class WriterPanelController : Controller
     {
         HeadingManager hm = new HeadingManager(new EfHeadingDal());

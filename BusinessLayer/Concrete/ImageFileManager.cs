@@ -22,5 +22,10 @@ namespace BusinessLayer.Concrete
         {
             return _imageFile.List();
         }
+
+        public void ImageAddBL(ImageFile image)
+        {
+            _imageFile.Insert(image);
+        }
     }
 }
